@@ -23,7 +23,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install playwright
+          pip install playwright requests pillow
           playwright install chromium
       
       - name: Run scraper
@@ -37,6 +37,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "📊 Actualización de precios - $(date +'%Y-%m-%d')"
+            git commit -m "Actualizacion $(date +'%Y-%m-%d')"
             git push
           fi
