@@ -1,0 +1,47 @@
+name: Scrape Precios Cecosesola
+
+on:
+  schedule:
+    # Ejecutar jueves, viernes, sábado y domingo a las 5:30 AM UTC (1:30 AM Venezuela)
+    - cron: '30 5 * * 4,5,6,0'
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/**'
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests pillow
+      
+      - name: Run scraper
+        run: python scripts/scrape.py
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Añadir precios.json e imágenes nuevas
+          git add precios.json images/ || true
+          
+          # Solo commit si hay cambios
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📊 Actualización de precios - $(date +'%Y-%m-%d')"
+            git push
+          fi
