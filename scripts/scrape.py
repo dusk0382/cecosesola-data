@@ -11,70 +11,67 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     page = browser.new_page()
     page.goto(URL, wait_until="networkidle", timeout=30000)
-    time.sleep(3)
+    time.sleep(5)
     
-    # Scroll para cargar
-    for _ in range(5):
-        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(1)
+    # Guardar screenshot para ver qué cargó
+    page.screenshot(path="debug_screenshot.png")
     
-    productos = page.evaluate("""
+    # Guardar HTML completo
+    html = page.content()
+    with open("debug_page.html", "w", encoding="utf-8") as f:
+        f.write(html)
+    
+    # Buscar cualquier texto que contenga "Bs" o "Precio"
+    texto_con_bs = page.evaluate("""
         () => {
-            const prods = [];
-            const filas = document.querySelectorAll('table tbody tr');
-            
-            filas.forEach((fila, i) => {
-                const celdas = fila.querySelectorAll('td');
-                if (celdas.length >= 2) {
-                    const nombre = celdas[0].innerText.trim();
-                    const precioCelda = celdas[1].innerText;
-                    
-                    // Intentar múltiples patrones para extraer el precio
-                    let precio = 0;
-                    
-                    // Patrón 1: número con Bs
-                    let match = precioCelda.match(/Bs[\\s.]*([\\d.,]+)/i);
-                    if (match) precio = parseFloat(match[1].replace(',', '.'));
-                    
-                    // Patrón 2: solo número con decimal
-                    if (!precio) {
-                        match = precioCelda.match(/(\\d+[.,]\\d+)/);
-                        if (match) precio = parseFloat(match[1].replace(',', '.'));
-                    }
-                    
-                    // Patrón 3: cualquier número
-                    if (!precio) {
-                        match = precioCelda.match(/(\\d+)/);
-                        if (match) precio = parseFloat(match[1]);
-                    }
-                    
-                    if (nombre && precio > 0) {
-                        prods.push({
-                            id: String(i),
-                            nombre: nombre,
-                            precio: precio,
-                            categoria: '',
-                            presentacion: '',
-                            imagen: ''
+            const elementos = document.querySelectorAll('*');
+            const encontrados = [];
+            elementos.forEach(el => {
+                const texto = el.innerText;
+                if (texto && (texto.includes('Bs') || texto.includes('Precio') || texto.includes('precio'))) {
+                    if (texto.length < 100) {
+                        encontrados.push({
+                            tag: el.tagName,
+                            texto: texto,
+                            clase: el.className
                         });
                     }
                 }
             });
-            return prods;
+            return encontrados.slice(0, 20);
         }
     """)
     
+    print("=== ELEMENTOS CON 'Bs' O 'Precio' ===")
+    for e in texto_con_bs:
+        print(f"{e['tag']}.{e['clase']}: {e['texto'][:80]}")
+    
+    # Buscar tablas
+    tablas = page.evaluate("""
+        () => {
+            const tablas = document.querySelectorAll('table');
+            return Array.from(tablas).map(t => ({
+                filas: t.querySelectorAll('tr').length,
+                texto_muestra: t.innerText.substring(0, 200)
+            }));
+        }
+    """)
+    
+    print(f"\n=== TABLAS ENCONTRADAS: {len(tablas)} ===")
+    for i, t in enumerate(tablas):
+        print(f"Tabla {i}: {t['filas']} filas")
+        print(f"  Muestra: {t['texto_muestra']}")
+    
     browser.close()
 
+# Guardar resultado del diagnóstico
 output = {
-    "fecha_actualizacion": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    "total_productos": len(productos),
-    "productos": productos
+    "fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    "elementos_bs": texto_con_bs,
+    "tablas": tablas
 }
 
-with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
-    json.dump(output, f, ensure_ascii=False, indent=2)
+with open("diagnostico.json", "w") as f:
+    json.dump(output, f, indent=2)
 
-print(f"✅ {len(productos)} productos guardados")
-for p in productos[:3]:
-    print(f"   - {p['nombre']}: {p['precio']} Bs")
+print("\n✅ Diagnóstico guardado")
