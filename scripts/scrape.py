@@ -13,10 +13,12 @@ with sync_playwright() as p:
     page.goto(URL, wait_until="networkidle", timeout=30000)
     time.sleep(5)
     
-    print("📜 Cargando...")
+    print("📜 Cargando productos...")
     
-    # Cargar algunos productos (no todos para prueba rápida)
-    for _ in range(5):
+    productos_antes = 0
+    sin_cambios = 0
+    
+    while sin_cambios < 3:
         try:
             ver_mas = page.locator('button:has-text("Ver más")').first
             if ver_mas.is_visible():
@@ -24,58 +26,71 @@ with sync_playwright() as p:
                 time.sleep(2)
         except:
             pass
+        
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        time.sleep(1)
+        
+        productos_actuales = page.evaluate("document.querySelectorAll('product-card').length")
+        
+        if productos_actuales == productos_antes:
+            sin_cambios += 1
+        else:
+            sin_cambios = 0
+            print(f"  📦 {productos_actuales} productos")
+        
+        productos_antes = productos_actuales
     
-    # Extraer con diagnóstico incluido
-    resultado = page.evaluate("""
+    print(f"\n🔍 Extrayendo {productos_antes} productos...")
+    
+    productos = page.evaluate("""
         () => {
             const prods = [];
             const cards = document.querySelectorAll('product-card');
-            const debug = [];
             
-            for (let i = 0; i < Math.min(cards.length, 10); i++) {
-                const card = cards[i];
+            cards.forEach((card, i) => {
                 const titleElem = card.querySelector('.title');
                 const descElem = card.querySelector('.description');
+                const imgElem = card.querySelector('img.image');
                 
-                const nombre = titleElem ? titleElem.innerText.trim() : 'NO_TITLE';
+                const nombre = titleElem ? titleElem.innerText.trim() : '';
                 let precio = 0;
                 
                 if (descElem) {
                     const texto = descElem.innerText;
-                    const match = texto.match(/([\\d.,]+)/);
+                    const match = texto.match(/(\\d+(?:[.,]\\d+)?)/);
                     if (match) precio = parseFloat(match[1].replace(',', '.'));
                 }
                 
-                debug.push({
-                    index: i,
-                    nombre: nombre,
-                    precio: precio,
-                    descText: descElem ? descElem.innerText : 'NO_DESC'
-                });
+                const imagen = imgElem ? imgElem.src : '';
                 
-                if (nombre && nombre !== 'NO_TITLE' && precio > 0) {
-                    prods.push({ id: String(i+1), nombre: nombre, precio: precio, imagen: '' });
+                if (nombre && precio > 0) {
+                    prods.push({
+                        id: String(i + 1),
+                        nombre: nombre,
+                        precio: precio,
+                        imagen: imagen
+                    });
                 }
-            }
+            });
             
-            return { productos: prods, debug: debug, totalCards: cards.length };
+            return prods;
         }
     """)
     
     browser.close()
 
-print(f"\n📊 Total cards: {resultado['totalCards']}")
-print(f"📦 Productos extraídos: {len(resultado['productos'])}")
-
-print("\n🔍 DEBUG (primeras 10 cards):")
-for d in resultado['debug']:
-    print(f"  [{d['index']}] nombre='{d['nombre'][:30]}' | precio={d['precio']} | descText='{d['descText']}'")
-
 output = {
     "fecha_actualizacion": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    "total_productos": len(resultado['productos']),
-    "productos": resultado['productos']
+    "total_productos": len(productos),
+    "productos": productos
 }
 
 with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
     json.dump(output, f, ensure_ascii=False, indent=2)
+
+print(f"✅ {len(productos)} productos guardados")
+
+if productos:
+    print("\n📋 Muestra:")
+    for p in productos[:5]:
+        print(f"  - {p['nombre']}: {p['precio']} Bs")
