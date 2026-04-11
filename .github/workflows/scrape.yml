@@ -2,7 +2,8 @@ name: Scrape Precios Cecosesola
 
 on:
   schedule:
-    - cron: '30 5 * * 4,5,6,0'
+    # Jueves a Domingo: 6 AM, 12 PM, 2 PM (hora Venezuela)
+    - cron: '0 10,16,18 * * 4,5,6,0'
   workflow_dispatch:
 
 permissions:
@@ -29,23 +30,14 @@ jobs:
       - name: Run scraper
         run: python scripts/scrape.py
       
-      - name: Upload debug files
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug
-          path: |
-            debug_screenshot.png
-            debug_page.html
-            diagnostico.json
-      
       - name: Commit and push changes
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add precios.json || true
+          git add precios.json images/ || true
           if git diff --staged --quiet; then
-            echo "No changes"
+            echo "No changes to commit"
           else
-            git commit -m "Update $(date +'%Y-%m-%d')"
+            git commit -m "Actualización $(date +'%Y-%m-%d %H:%M')"
             git push
           fi
