@@ -11,67 +11,94 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     page = browser.new_page()
     page.goto(URL, wait_until="networkidle", timeout=30000)
-    time.sleep(5)
+    time.sleep(3)
     
-    # Guardar screenshot para ver qué cargó
-    page.screenshot(path="debug_screenshot.png")
+    print("📜 Cargando todos los productos...")
     
-    # Guardar HTML completo
-    html = page.content()
-    with open("debug_page.html", "w", encoding="utf-8") as f:
-        f.write(html)
+    # Hacer clic en "Ver más" hasta que no haya más
+    clicks = 0
+    max_clicks = 20  # Límite de seguridad
     
-    # Buscar cualquier texto que contenga "Bs" o "Precio"
-    texto_con_bs = page.evaluate("""
+    while clicks < max_clicks:
+        try:
+            # Buscar el botón "Ver más"
+            ver_mas = page.locator('button:has-text("Ver más")').first
+            if ver_mas.is_visible():
+                ver_mas.click()
+                clicks += 1
+                print(f"  👆 Clic {clicks} en 'Ver más'")
+                time.sleep(2)  # Esperar a que carguen los productos
+            else:
+                print("  ✅ No hay más botón 'Ver más'")
+                break
+        except:
+            print("  ✅ No se encontró el botón 'Ver más'")
+            break
+    
+    # Scroll final para asegurar que todo cargó
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    time.sleep(2)
+    
+    print("🔍 Extrayendo productos...")
+    
+    productos = page.evaluate("""
         () => {
-            const elementos = document.querySelectorAll('*');
-            const encontrados = [];
-            elementos.forEach(el => {
-                const texto = el.innerText;
-                if (texto && (texto.includes('Bs') || texto.includes('Precio') || texto.includes('precio'))) {
-                    if (texto.length < 100) {
-                        encontrados.push({
-                            tag: el.tagName,
-                            texto: texto,
-                            clase: el.className
-                        });
+            const prods = [];
+            
+            // Seleccionar todos los product-card
+            const cards = document.querySelectorAll('product-card');
+            
+            cards.forEach((card, i) => {
+                // Buscar el título (nombre del producto)
+                const titleElem = card.querySelector('.title');
+                const nombre = titleElem ? titleElem.innerText.trim() : '';
+                
+                // Buscar el precio (está en .description)
+                const descElem = card.querySelector('.description');
+                let precio = 0;
+                if (descElem) {
+                    const precioTexto = descElem.innerText;
+                    // Extraer número del formato "Bs. 810.75" o "Bs 810,75"
+                    const match = precioTexto.match(/([\\d.,]+)/);
+                    if (match) {
+                        precio = parseFloat(match[1].replace(',', '.'));
                     }
                 }
+                
+                // Buscar imagen
+                const imgElem = card.querySelector('img.image');
+                const imagen = imgElem ? imgElem.src : '';
+                
+                if (nombre && precio > 0) {
+                    prods.push({
+                        id: String(i + 1),
+                        nombre: nombre,
+                        precio: precio,
+                        categoria: '',
+                        presentacion: '',
+                        imagen: imagen
+                    });
+                }
             });
-            return encontrados.slice(0, 20);
+            
+            return prods;
         }
     """)
-    
-    print("=== ELEMENTOS CON 'Bs' O 'Precio' ===")
-    for e in texto_con_bs:
-        print(f"{e['tag']}.{e['clase']}: {e['texto'][:80]}")
-    
-    # Buscar tablas
-    tablas = page.evaluate("""
-        () => {
-            const tablas = document.querySelectorAll('table');
-            return Array.from(tablas).map(t => ({
-                filas: t.querySelectorAll('tr').length,
-                texto_muestra: t.innerText.substring(0, 200)
-            }));
-        }
-    """)
-    
-    print(f"\n=== TABLAS ENCONTRADAS: {len(tablas)} ===")
-    for i, t in enumerate(tablas):
-        print(f"Tabla {i}: {t['filas']} filas")
-        print(f"  Muestra: {t['texto_muestra']}")
     
     browser.close()
 
-# Guardar resultado del diagnóstico
 output = {
-    "fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    "elementos_bs": texto_con_bs,
-    "tablas": tablas
+    "fecha_actualizacion": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    "total_productos": len(productos),
+    "productos": productos
 }
 
-with open("diagnostico.json", "w") as f:
-    json.dump(output, f, indent=2)
+with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
+    json.dump(output, f, ensure_ascii=False, indent=2)
 
-print("\n✅ Diagnóstico guardado")
+print(f"\n✅ {len(productos)} productos guardados")
+
+# Mostrar los primeros 5 como muestra
+print("\n📋 Muestra:")
+for p in productos[:5]:
+    print(f"  - {p['nombre']}: {p['precio']} Bs")
