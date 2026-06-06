@@ -1,5 +1,5 @@
 {
-  "fecha_actualizacion": "2026-06-06 11:27:52",
+  "fecha_actualizacion": "2026-06-06 17:14:23",
   "total_productos": 524,
   "productos": [
     {
@@ -24,7 +24,7 @@
       "id": "4",
       "nombre": "Jugo Natulac Pera 250ml",
       "precio": 415.3,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/4_eb544899.jpg"
     },
     {
       "id": "5",
@@ -36,7 +36,7 @@
       "id": "6",
       "nombre": "Gelatina Rolda",
       "precio": 1900,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/6_d2fd5368.jpg"
+      "imagen": ""
     },
     {
       "id": "7",
@@ -48,7 +48,7 @@
       "id": "8",
       "nombre": "Gelatina Rolda black",
       "precio": 1900,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/8_61a31501.jpg"
     },
     {
       "id": "9",
@@ -90,19 +90,19 @@
       "id": "15",
       "nombre": "Jabon de Baño Every Night Avena",
       "precio": 882.6,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/15_325b62c8.jpg"
     },
     {
       "id": "16",
       "nombre": "Jabon de Baño Every Night Citrico",
       "precio": 882.6,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/16_06ce2e67.jpg"
     },
     {
       "id": "17",
       "nombre": "Jabon de Baño Every Night Manzana Verde",
       "precio": 882.6,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/17_c10a681d.jpg"
     },
     {
       "id": "18",
@@ -114,7 +114,7 @@
       "id": "19",
       "nombre": "Suero Guaralact",
       "precio": 730,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/19_f9f414dc.jpg"
     },
     {
       "id": "20",
@@ -138,7 +138,7 @@
       "id": "23",
       "nombre": "Tamarindo",
       "precio": 520,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/23_cec1ab6d.jpg"
     },
     {
       "id": "24",
@@ -228,7 +228,7 @@
       "id": "38",
       "nombre": "Café Cordillera 200 Grs",
       "precio": 1550,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/38_b373b328.jpg"
     },
     {
       "id": "39",
@@ -270,7 +270,7 @@
       "id": "45",
       "nombre": "Carne De Soya Soy Tex 200 Grs",
       "precio": 545,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/45_76243d49.jpg"
     },
     {
       "id": "46",
@@ -312,13 +312,13 @@
       "id": "52",
       "nombre": "Frutos Secos",
       "precio": 375.27,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/52_65b5b3e0.jpg"
     },
     {
       "id": "53",
       "nombre": "Huevos Medio Carton",
       "precio": 1760,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/53_7566e1c3.jpg"
     },
     {
       "id": "54",
@@ -348,7 +348,7 @@
       "id": "58",
       "nombre": "Sardina Margarita Tomate",
       "precio": 730,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/58_b79d256d.jpg"
     },
     {
       "id": "59",
@@ -360,13 +360,13 @@
       "id": "60",
       "nombre": "Queso Kg",
       "precio": 3380,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/60_0ec9828b.jpg"
     },
     {
       "id": "61",
       "nombre": "Quinchoncho",
       "precio": 475,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/61_aa88fdeb.jpg"
     },
     {
       "id": "62",
@@ -402,7 +402,7 @@
       "id": "67",
       "nombre": "Jabon Polvo Llaves Blancura",
       "precio": 910,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/67_62886e71.jpg"
     },
     {
       "id": "68",
@@ -414,13 +414,13 @@
       "id": "69",
       "nombre": "Pasta Especial Corta rigatone",
       "precio": 885,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/69_dc220198.jpg"
     },
     {
       "id": "70",
       "nombre": "Flor De Jamaica",
       "precio": 505,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/70_0131113d.jpg"
     },
     {
       "id": "71",
@@ -432,7 +432,7 @@
       "id": "72",
       "nombre": "Jabòn Polvo Llaves Limòn",
       "precio": 910,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/72_184abb52.jpg"
     },
     {
       "id": "73",
@@ -444,7 +444,7 @@
       "id": "74",
       "nombre": "Jabon de Baño Rexona Bamboo",
       "precio": 999.5,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/74_b2491f02.jpg"
     },
     {
       "id": "75",
@@ -456,7 +456,7 @@
       "id": "76",
       "nombre": "Jugo El Tunal Pera 1lt",
       "precio": 1100,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/76_da5c44bb.jpg"
     },
     {
       "id": "77",
@@ -468,7 +468,7 @@
       "id": "78",
       "nombre": "Jugo Natulac Manzana 250ml",
       "precio": 415.3,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/78_12e02b49.jpg"
     },
     {
       "id": "79",
@@ -510,19 +510,19 @@
       "id": "85",
       "nombre": "Lava Lava Charmys 800ml",
       "precio": 1360,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/85_dcf987c1.jpg"
     },
     {
       "id": "86",
       "nombre": "Lavaplatos Almessy 450g",
       "precio": 1650,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/86_34526842.jpg"
     },
     {
       "id": "87",
       "nombre": "LAVAPLATOS LAS LLAVES CREMA 250gr",
       "precio": 1500,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/87_c9b4ded0.jpg"
     },
     {
       "id": "88",
@@ -534,7 +534,7 @@
       "id": "89",
       "nombre": "Pasta 8 De Marzo 3 Sabores Tornillo",
       "precio": 895,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/89_0774f35d.jpg"
     },
     {
       "id": "90",
@@ -546,13 +546,13 @@
       "id": "91",
       "nombre": "Pasta 8 De Marzo Brocoli Larga",
       "precio": 895,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/91_4a6a1190.jpg"
     },
     {
       "id": "92",
       "nombre": "Pasta 8 De Marzo Integral Tornillo",
       "precio": 895,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/92_6df9ff69.jpg"
     },
     {
       "id": "93",
@@ -564,13 +564,13 @@
       "id": "94",
       "nombre": "Pasta 8 De Marzo Natural Corta",
       "precio": 895,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/94_4046e28d.jpg"
+      "imagen": ""
     },
     {
       "id": "95",
       "nombre": "Pasta 8 De Marzo Zanahoria Larga",
       "precio": 895,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/95_e8d095bf.jpg"
+      "imagen": ""
     },
     {
       "id": "96",
@@ -588,19 +588,19 @@
       "id": "98",
       "nombre": "Alinos Curcuma",
       "precio": 690.4,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/98_1965c117.jpg"
+      "imagen": ""
     },
     {
       "id": "99",
       "nombre": "Alino San Miguel Grand",
       "precio": 2086,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/99_6e1b2670.jpg"
     },
     {
       "id": "100",
       "nombre": "Alino San Miguel Pq",
       "precio": 1060,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/100_b87a5c2c.jpg"
+      "imagen": ""
     },
     {
       "id": "101",
@@ -630,7 +630,7 @@
       "id": "105",
       "nombre": "Pan De Sandwiche Grd",
       "precio": 830,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/105_89eeaf3e.jpg"
     },
     {
       "id": "106",
@@ -660,7 +660,7 @@
       "id": "110",
       "nombre": "Maizoritos Bolsa Normal 300gr",
       "precio": 1600,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/110_58cfd326.jpg"
+      "imagen": ""
     },
     {
       "id": "111",
@@ -672,7 +672,7 @@
       "id": "112",
       "nombre": "Maizoritos Azucarados 240G",
       "precio": 1650,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/112_b7d80ac4.jpg"
+      "imagen": ""
     },
     {
       "id": "113",
@@ -696,7 +696,7 @@
       "id": "116",
       "nombre": "Mentol Avivir 30 GRAMOS",
       "precio": 880,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/116_5e80b352.jpg"
+      "imagen": ""
     },
     {
       "id": "117",
@@ -708,7 +708,7 @@
       "id": "118",
       "nombre": "Granola 8 De Marzo",
       "precio": 665,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/118_f6aa6cb4.jpg"
+      "imagen": ""
     },
     {
       "id": "119",
@@ -720,13 +720,13 @@
       "id": "120",
       "nombre": "Leche Condensada Natulac 380ml",
       "precio": 1045,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/120_42beaf74.jpg"
+      "imagen": ""
     },
     {
       "id": "121",
       "nombre": "Leche Descremada Purisima 1lt",
       "precio": 1410,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/121_e216bcb9.jpg"
+      "imagen": ""
     },
     {
       "id": "122",
@@ -750,13 +750,13 @@
       "id": "125",
       "nombre": "Multiuso Tulipan 1lt",
       "precio": 1230,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/125_399da8ca.jpg"
+      "imagen": ""
     },
     {
       "id": "126",
       "nombre": "Multiuso Tulipan 1/2 lt",
       "precio": 609.5,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/126_4f660c69.jpg"
+      "imagen": ""
     },
     {
       "id": "127",
@@ -792,7 +792,7 @@
       "id": "132",
       "nombre": "Pepito Cheez Pek Picante",
       "precio": 465,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/132_e482650f.jpg"
+      "imagen": ""
     },
     {
       "id": "133",
@@ -828,7 +828,7 @@
       "id": "138",
       "nombre": "Cera Tulipan 1/2 lt",
       "precio": 953.5,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/138_3a15a1f8.jpg"
     },
     {
       "id": "139",
@@ -846,7 +846,7 @@
       "id": "141",
       "nombre": "Mortadela Plumrose",
       "precio": 1680.01,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/141_94829340.jpg"
+      "imagen": ""
     },
     {
       "id": "142",
@@ -858,7 +858,7 @@
       "id": "143",
       "nombre": "Natilla La Vega",
       "precio": 1320,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/143_2f7d858f.jpg"
+      "imagen": ""
     },
     {
       "id": "144",
@@ -954,7 +954,7 @@
       "id": "159",
       "nombre": "Shampoo sobre Head & Shoulders",
       "precio": 270,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/159_f5554860.jpg"
+      "imagen": ""
     },
     {
       "id": "160",
@@ -984,7 +984,7 @@
       "id": "164",
       "nombre": "Vainilla",
       "precio": 1055,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/164_44d3afd8.jpg"
+      "imagen": ""
     },
     {
       "id": "165",
@@ -1014,7 +1014,7 @@
       "id": "169",
       "nombre": "Vinagre Mavesa 500 ML",
       "precio": 795.6,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/169_b08d11fc.jpg"
+      "imagen": ""
     },
     {
       "id": "170",
@@ -1062,7 +1062,7 @@
       "id": "177",
       "nombre": "Choco Pilos Coco",
       "precio": 1106,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/177_f88c45e2.jpg"
+      "imagen": ""
     },
     {
       "id": "178",
@@ -1086,13 +1086,13 @@
       "id": "181",
       "nombre": "Mortadela Alibal 1kg",
       "precio": 2065.01,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/181_d7f032b4.jpg"
     },
     {
       "id": "182",
       "nombre": "Mortadela Punta Mte 1KG",
       "precio": 2895,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/182_9e3c7283.jpg"
+      "imagen": ""
     },
     {
       "id": "183",
@@ -1128,13 +1128,13 @@
       "id": "188",
       "nombre": "Crema Dental Maksin 135gr",
       "precio": 845,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/188_6d9e04bc.jpg"
+      "imagen": ""
     },
     {
       "id": "189",
       "nombre": "Cubito Maggi",
       "precio": 120,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/189_42fecc26.jpg"
+      "imagen": ""
     },
     {
       "id": "190",
@@ -1176,7 +1176,7 @@
       "id": "196",
       "nombre": "Diablito Plumrose",
       "precio": 1350,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/196_2fe0bf95.jpg"
+      "imagen": ""
     },
     {
       "id": "197",
@@ -1206,13 +1206,13 @@
       "id": "201",
       "nombre": "Galleta Honny Brand",
       "precio": 1660,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/201_4d7a43d4.jpg"
+      "imagen": ""
     },
     {
       "id": "202",
       "nombre": "Galleta Artesanal",
       "precio": 285,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/202_c8784be7.jpg"
+      "imagen": ""
     },
     {
       "id": "203",
@@ -1344,7 +1344,7 @@
       "id": "224",
       "nombre": "Pasta Corta Dedales Primor extra",
       "precio": 895,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/224_b675a068.jpg"
+      "imagen": ""
     },
     {
       "id": "225",
@@ -1386,7 +1386,7 @@
       "id": "231",
       "nombre": "Compota Heinz Pera 186gr",
       "precio": 372.6,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/231_e9cf8e38.jpg"
     },
     {
       "id": "232",
@@ -1464,7 +1464,7 @@
       "id": "244",
       "nombre": "Jabon de baño Dalan 125gr",
       "precio": 555,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/244_38df9924.jpg"
+      "imagen": ""
     },
     {
       "id": "245",
@@ -1500,7 +1500,7 @@
       "id": "250",
       "nombre": "Jabon de Baño Rexona Fresh 120gr",
       "precio": 999.5,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/250_27a45195.jpg"
     },
     {
       "id": "251",
@@ -1524,13 +1524,13 @@
       "id": "254",
       "nombre": "Miel San Carlos pq",
       "precio": 2495,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/254_7864e350.jpg"
+      "imagen": ""
     },
     {
       "id": "255",
       "nombre": "Miel Carache 500ml",
       "precio": 2495,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/255_c36fa60f.jpg"
     },
     {
       "id": "256",
@@ -1542,7 +1542,7 @@
       "id": "257",
       "nombre": "Vinagre de Frutas Etna de Manzana 300ml",
       "precio": 1148.38,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/257_d6221d92.jpg"
     },
     {
       "id": "258",
@@ -1566,7 +1566,7 @@
       "id": "261",
       "nombre": "Mortadela Punta del Monte 500gr",
       "precio": 1630,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/261_5a17a3e6.jpg"
+      "imagen": ""
     },
     {
       "id": "262",
@@ -1626,13 +1626,13 @@
       "id": "271",
       "nombre": "Pasta Capri tornillo 1kg",
       "precio": 865,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/271_d3e2bcbc.jpg"
+      "imagen": ""
     },
     {
       "id": "272",
       "nombre": "Pastelitos de arequipe und",
       "precio": 1055,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/272_c461ea54.jpg"
     },
     {
       "id": "273",
@@ -1686,7 +1686,7 @@
       "id": "281",
       "nombre": "Suavizante Tulipan 500ml",
       "precio": 690,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/281_5fecf49a.jpg"
     },
     {
       "id": "282",
@@ -1704,7 +1704,7 @@
       "id": "284",
       "nombre": "Javon en polvo alive blanqueador 500gr",
       "precio": 725.6,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/284_0d73f390.jpg"
+      "imagen": ""
     },
     {
       "id": "285",
@@ -1914,19 +1914,19 @@
       "id": "319",
       "nombre": "Jabon en Polvo Alive Floral 500 gr",
       "precio": 725.6,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/319_6a6942cf.jpg"
+      "imagen": ""
     },
     {
       "id": "320",
       "nombre": "FIDEO CAPRI 250gr",
       "precio": 695,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/320_674c4a34.jpg"
     },
     {
       "id": "321",
       "nombre": "SALSA KET CHUP LA GIRALDA 397gr",
       "precio": 820,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/321_245ba645.jpg"
     },
     {
       "id": "322",
@@ -1962,13 +1962,13 @@
       "id": "327",
       "nombre": "REFRESCO 7UP 1.5 LITROS",
       "precio": 722,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/327_0fe28b5d.jpg"
     },
     {
       "id": "328",
       "nombre": "REFRESCO GLUP KOLITA 2 LITROS",
       "precio": 620,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/328_a8b553fd.jpg"
     },
     {
       "id": "329",
@@ -2106,13 +2106,13 @@
       "id": "351",
       "nombre": "MAIZ DULCE PAFIA 425 GR",
       "precio": 920,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/351_cbf9adde.jpg"
+      "imagen": ""
     },
     {
       "id": "352",
       "nombre": "Gelatina Gella Naranja 90gr",
       "precio": 740,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/352_da93373b.jpg"
+      "imagen": ""
     },
     {
       "id": "353",
@@ -2130,7 +2130,7 @@
       "id": "355",
       "nombre": "Gelatina Sonrissa Tutti-Frutti 66gr",
       "precio": 830,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/355_faf4e075.jpg"
+      "imagen": ""
     },
     {
       "id": "356",
@@ -2148,7 +2148,7 @@
       "id": "358",
       "nombre": "prestobarba razormax",
       "precio": 260,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/358_4d353c69.jpg"
+      "imagen": ""
     },
     {
       "id": "359",
@@ -2172,7 +2172,7 @@
       "id": "362",
       "nombre": "crema galactic triple max 75 gms",
       "precio": 625.4,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/362_1136d073.jpg"
     },
     {
       "id": "363",
@@ -2196,7 +2196,7 @@
       "id": "366",
       "nombre": "CEREAL PLANET FRUIT SANTONI",
       "precio": 1010,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/366_4b96cee0.jpg"
+      "imagen": ""
     },
     {
       "id": "367",
@@ -2214,7 +2214,7 @@
       "id": "369",
       "nombre": "GELATINA DE CABELLO EVERY NIGHT 250 GR",
       "precio": 1730,
-      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/369_169d001f.jpg"
+      "imagen": ""
     },
     {
       "id": "370",
@@ -2268,7 +2268,7 @@
       "id": "378",
       "nombre": "TOMATE",
       "precio": 950,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/378_bb108a67.jpg"
     },
     {
       "id": "379",
@@ -3108,7 +3108,7 @@
       "id": "518",
       "nombre": "Desperdicio FG",
       "precio": 171.03,
-      "imagen": ""
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/518_bb94ef5d.jpg"
     },
     {
       "id": "519",
