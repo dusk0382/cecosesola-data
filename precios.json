@@ -1,6 +1,6 @@
 {
-  "fecha_actualizacion": "2026-07-26 11:18:41",
-  "total_productos": 526,
+  "fecha_actualizacion": "2026-07-26 16:57:37",
+  "total_productos": 527,
   "productos": [
     {
       "id": "1",
@@ -3157,6 +3157,12 @@
       "nombre": "QUESO CLINEJA LACTEOS DON ALPIDIA 500G",
       "precio": 3000,
       "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/526_5c3acc25.jpg"
+    },
+    {
+      "id": "527",
+      "nombre": "REMATE DE CAMBUR",
+      "precio": 300,
+      "imagen": "https://raw.githubusercontent.com/dusk0382/cecosesola-data/main/images/527_5f457e0d.jpg"
     }
   ]
 }
