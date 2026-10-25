@@ -4,6 +4,8 @@ import time
 import requests
 import os
 import hashlib
+import re
+import unicodedata
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 from PIL import Image
@@ -47,6 +49,97 @@ def configurar_sesion_robusta():
     
     return session
 
+API_URL = "https://kana.imk.cecosesola.coop/graphql"
+
+def normalizar_nombre(valor):
+    valor = unicodedata.normalize('NFD', valor or '')
+    valor = ''.join(c for c in valor if unicodedata.category(c) != 'Mn')
+    return re.sub(r'\s+', ' ', valor).strip().lower()
+
+def cargar_productos_api(session):
+    """Productos activos de la API oficial, con su _id estable y el Bs calculado.
+
+    El id del mirror era posicional (`i + 1`); al cambiar el orden de la PWA se
+    reutilizaba para otro producto y la app mezclaba filas. La API entrega un
+    `_id` estable por producto; lo usamos como id del mirror.
+    """
+    response = session.post(
+        API_URL,
+        json={"query": "query { downloadFile }"},
+        timeout=180,
+    )
+    response.raise_for_status()
+    envelope = response.json()
+    inner = (envelope.get("data") or {}).get("downloadFile")
+    if not inner:
+        raise RuntimeError("la API no devolvió data.downloadFile")
+    payload = json.loads(inner)
+
+    rate = None
+    for target in ((payload.get("officialRate") or {}).get("model") or {}).get("forSales", []):
+        if target.get("destination") == "VED":
+            raw = (target.get("value") or {}).get("$numberDecimal")
+            if raw:
+                rate = float(raw)
+                break
+
+    productos = []
+    for wrapper in payload.get("products") or []:
+        model = wrapper.get("model") or {}
+        status = model.get("status")
+        if status and str(status).upper() != "ACTIVE":
+            continue
+        nombre = (model.get("name") or "").strip()
+        api_id = model.get("_id")
+        if not nombre or api_id is None:
+            continue
+        amount = ((((model.get("pricePublished") or {}).get("priceBase") or {})
+                   .get("amount") or {}).get("$numberDecimal"))
+        cec = float(amount) if amount is not None else None
+        bs = cec * rate if (cec is not None and rate is not None) else None
+        productos.append({
+            "id": str(api_id),
+            "norm": normalizar_nombre(nombre),
+            "bs": bs,
+        })
+    print(f"  API: {len(productos)} productos activos, tasa {rate}")
+    return productos
+
+def asignar_ids_estables(productos, api_products):
+    """Asigna a cada producto de la PWA el _id de la API oficial.
+
+    Si un nombre aparece varias veces, se empareja por precio en Bs (la API da
+    CEC * tasa; la PWA muestra Bs). Si no hay match, se usa un hash estable de
+    nombre + URL de imagen, nunca la posición en el DOM.
+    """
+    por_nombre = {}
+    for p in api_products:
+        por_nombre.setdefault(p["norm"], []).append(p)
+
+    usados = set()
+    for producto in productos:
+        norm = normalizar_nombre(producto.get("nombre"))
+        candidatos = por_nombre.get(norm, [])
+        base = None
+        if candidatos:
+            objetivo = producto.get("precio") or 0
+            elegido = min(
+                candidatos,
+                key=lambda c: abs((c["bs"] if c["bs"] is not None else 0) - objetivo),
+            )
+            candidatos.remove(elegido)
+            base = elegido["id"]
+        if not base:
+            raw = norm + "|" + str(producto.get("imagen") or "")
+            base = "name-" + hashlib.sha1(raw.encode()).hexdigest()[:20]
+        uid = base
+        sufijo = 2
+        while uid in usados:
+            uid = f"{base}-{sufijo}"
+            sufijo += 1
+        usados.add(uid)
+        producto["id"] = uid
+
 def descargar_y_optimizar_imagen(producto, manifest, session):
     url = producto.get('imagen')
     producto_id = producto['id']
@@ -78,7 +171,10 @@ def descargar_y_optimizar_imagen(producto, manifest, session):
 
             img.thumbnail((120, 120), Image.Resampling.LANCZOS)
 
-            filename = f"{producto_id}_{url_hash[:8]}.jpg"
+            # Nombre por contenido/URL, sin el id del producto: el id viejo era
+            # posicional y hacía que la URL de la misma foto cambiara en cada
+            # reordenamiento del mirror.
+            filename = f"{url_hash[:16]}.jpg"
             filepath = os.path.join(IMAGES_DIR, filename)
             img.save(filepath, "JPEG", quality=70, optimize=True)
 
@@ -169,7 +265,6 @@ def main():
 
                     if (nombre && precio > 0) {
                         prods.push({
-                            id: String(i + 1),
                             nombre: nombre,
                             precio: precio,
                             imagen: imgElem ? imgElem.src : ''
@@ -189,6 +284,15 @@ def main():
 
     # Inicializamos la sesión robusta
     session = configurar_sesion_robusta()
+
+    print("\n🔗 Resolviendo ids estables con la API oficial...")
+    try:
+        api_products = cargar_productos_api(session)
+        asignar_ids_estables(productos_crudos, api_products)
+        print(f"  ✅ {len(productos_crudos)} productos de la PWA mapeados")
+    except Exception as e:
+        print(f"  ⚠️ API no disponible ({e}); usando hash estable nombre+imagen")
+        asignar_ids_estables(productos_crudos, [])
     
     # En GitHub Actions (2 cores), ThreadPool tomará unos 6 workers. Ideal para no saturar.
     max_workers = min(10, os.cpu_count() + 4) 
@@ -211,12 +315,14 @@ def main():
                 
             productos_finales.append(prod_procesado)
 
-    productos_finales.sort(key=lambda x: int(x['id']))
+    # Orden estable y legible; el id ya no es numérico.
+    productos_finales.sort(key=lambda x: (normalizar_nombre(x['nombre']), x['id']))
 
     guardar_manifest(manifest)
 
     output = {
         "fecha_actualizacion": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "id_scheme": "api-v1",
         "total_productos": len(productos_finales),
         "productos": productos_finales
     }

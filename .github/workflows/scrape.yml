@@ -29,12 +29,32 @@ jobs:
       
       - name: Run scraper
         run: python scripts/scrape.py
+
+      - name: Validar ids del mirror
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          d = json.load(open('precios.json', encoding='utf-8'))
+          prods = d.get('productos', [])
+          ids = [p.get('id') for p in prods]
+          errores = []
+          if d.get('id_scheme') != 'api-v1':
+              errores.append('id_scheme ausente')
+          if len(ids) != len(set(ids)):
+              errores.append('ids duplicados')
+          if any(not (p.get('nombre') or '').strip() for p in prods):
+              errores.append('nombre vacio')
+          if errores:
+              print('; '.join(errores))
+              sys.exit(1)
+          print(f'OK: {len(prods)} productos con ids estables')
+          PY
       
       - name: Commit and push changes
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add precios.json images/ || true
+          git add precios.json images/ images_manifest.json || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
